@@ -1,0 +1,105 @@
+<!--* One page includes a table of books. Table MUST have at the following columns (title, author(s), year published, publisher, page count, MSRP) and at four to eight rows of data.
+
+* On the same page as your table of data, include a `<form>`suitable for adding rows to the table. (It doesn't need to *do* anything yet.) Include one input element for each column in the table. Use the appropriate input type. Format the form using an appropriate Bootstrap recipe.-->
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Woohoo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="book.html">Books</a>
+          <a class="nav-item nav-link" href="anime.html">Anime</a>
+        </div>
+      </div>
+    </nav>
+    <!-- navbar was taken at https://getbootstrap.com/docs/4.0/components/navbar/-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>repl.it</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <script src="https://unpkg.com/vue@next"></script>
+
+    </head>
+<body>
+  <div id="offerApp">
+    <h2 id="myHeader">Books</h2>
+    <div class = container-fluid>
+    <table class="table table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author(s)</th>
+          <th>Year Published</th>
+          <th>Publisher</th>
+          <th>Page Count</th>
+          <th>MSRP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="book in books">
+          <td>{{book.Title}}</td>
+          <td>{{book.Author}}</td>
+          <td>{{book.Year_Published}}</td>
+          <td>{{book.Publisher}}</td>
+          <td>{{book.Page_Count}}</td>
+          <td>{{book.MSRP}}</td>
+        </tr>
+        <!-- <tr>
+          <td>Peppermint the Pelican</td>
+          <td>Perry Pumpernickel</td>
+          <td class="text-center">1999</td>
+          <td>Mike Tyson</td>
+          <td>50</td>
+          <td>.01</td>
+        </tr>
+        <tr>
+          <td>LoL: Read Your Enemies Like a Book</td>
+          <td>Any Silver Player</td>
+          <td class="text-center">2009</td>
+          <td>Rito Games</td>
+          <td>1</td>
+          <td>60</td>
+        </tr>
+        <tr>
+          <td>Pajama Man Sam</td>
+          <td>Sam Pajama</td>
+          <td class="text-center">2012</td>
+          <td>Pajamarama</td>
+          <td>100</td>
+          <td>150</td>
+        </tr> -->
+      </tbody>
+      </table>
+      <!-- table inspiration: https://www.w3schools.com/tags/tag_td.asp -->
+    <form v-on:submit.prevent="postNewOffer">
+      <p class="information"> Add a book to our list </p>
+      <label for="t">Title:</label><br>
+      <input type="text" v-model="bookForm.Title" id="t" name="t"><br>
+      <label for="a">Author(s):</label><br>
+      <input type="text" v-model="bookForm.Author" id="a" name="a"> <br>
+      <label for="yp">Year Published:</label><br>
+      <input type="text" v-model="bookForm.Year_Published" id="yp" name="yp"><br>
+      <label for="p">Publisher:</label><br>
+      <input type="text" v-model="bookForm.Publisher" id="p" name="p"><br>
+      <label for="pc">Page Count:</label><br>
+      <input type="text" v-model="bookForm.Page_Count" id="pc" name="pc"><br>
+      <label for="m">MSRP:</label><br>
+      <input type="text" v-model="bookForm.MSRP" id="m" name="m"><br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <!-- inspiration for form: https://www.w3schools.com/html/html_forms.asp-->
+    </form>
+    </div>    
+    </div>
+    <!-- <script src='js/tablesort.min.js'></script> -->
+    <!-- <script>
+      new Tablesort(document.getElementById('offerApp'));
+    </script> -->
+    <script src="js/index.js"></script>
+</body>
+    </html>
